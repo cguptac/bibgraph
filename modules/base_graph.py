@@ -51,7 +51,7 @@ class base_graph:
     def __getitem__(self, key):
         return self.graph[key]
 
-    def counts(self, keylist, filter=False, sort=True):
+    def counts(self, keylist, filterQ=False, sortQ=True):
         tmp = {}
         if (type(keylist)==list) | (type(keylist)==set):
             for x in keylist:
@@ -64,14 +64,14 @@ class base_graph:
                 else:
                     pass
 
-            if filter==True:
+            if filterQ==True:
                 for x in keylist:
                     try:
                         tmp.pop(x)
                     except KeyError:
                         pass
 
-            if sort==True:
+            if sortQ==True:
                 sorted_tmp = sorted(tmp.iteritems(), key=operator.itemgetter(1), reverse=True)
                 tmp = sorted_tmp
 
