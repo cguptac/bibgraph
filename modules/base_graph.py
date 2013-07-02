@@ -19,14 +19,12 @@ class base_graph:
             try:
                 self.graph[nodeId].update(set(data))
             except KeyError:
-                print "Node %s does not exist" %(nodeId)
-                raise 
+                raise KeyError("Node %s does not exist" %(nodeId))
         else:
-            print """
+            raise errors.ListOrSet("""
                   Useage: addtonode(self, nodeId, data)
                   Input data type is %s, should be one of <type 'list'> or <type 'set'>
-                  """ %(type(data))
-            raise errors.ListOrSet("must provide type 'list' or type 'set'")
+                  """ %(type(data)))
             
 
     def newnode(self, nodeId):
@@ -41,10 +39,6 @@ class base_graph:
         if self.graph.has_key(nodeId)==False:
             self.graph.update({nodeId:set([])})
         else:
-            print """
-                  Useage: newnode(self, nodeId)
-                  self.graph already has a node called %s
-                  """ %nodeId
             raise errors.NodeError("nodeId %s already exists" %nodeId)
 
 
@@ -65,14 +59,12 @@ class base_graph:
             try:
                 self.graph[nodeId] = self.graph[nodeId] - set(data)
             except KeyError:
-                print "Node %s does not exist" %(nodeId)
-                raise 
+                raise KeyError("Node %s does not exist" %(nodeId))
         else:
-            print """
+            raise errors.ListOrSet( """
                   useage: removefromnode(self, nodeId, data)
                   data must be <type 'list'> or <type 'set'>
-                  """
-            raise errors.ListOrSet('input should be either a list or a set')
+                  """)
 
     def delnode(self, nodeId):
         """
