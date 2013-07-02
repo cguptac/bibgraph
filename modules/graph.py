@@ -7,14 +7,14 @@ class graph:
         self.upstr = bg.base_graph()
         self.dnstr = bg.base_graph()
         print """
-This is a temporary message that will be displayed till it is disabled.
-The place to disable this message is in module %s.
+    This is a temporary message that will be displayed till it is disabled.
+    The place to disable this message is in module %s.
 
-The following convention is used: If A cites B, then A is DOWNSTREAM
-of B. B is UPSTREAM of A.
+    The following convention is used: If A cites B, then A is DOWNSTREAM
+    of B. B is UPSTREAM of A.
 
-Similarly, if A is cited by B, A is UPSTREAM of B, while B is
-DOWNSTREAM of A.
+    Similarly, if A is cited by B, A is UPSTREAM of B, while B is
+    DOWNSTREAM of A.
               """ %(str(inspect.stack()[0][1]))
 
     

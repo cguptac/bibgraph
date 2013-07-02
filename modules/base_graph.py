@@ -7,13 +7,13 @@ class base_graph:
 
     def addtonode(self, nodeId, data):
         """
-useage: obj.addtonode(nodeId, data)
-nodeId has to be an existing node on the graph
-data has to be a list or set of the same type of elements as nodeId
+        useage: obj.addtonode(nodeId, data)
+        nodeId has to be an existing node on the graph
+        data has to be a list or set of the same type of elements as nodeId
 
-If nodeId is not found, a KeyError is raised.
-If data does not have type 'list' or 'set, an errors.ListOrSet
-error is raised.
+        If nodeId is not found, a KeyError is raised.
+        If data does not have type 'list' or 'set, an errors.ListOrSet
+        error is raised.
         """
         if (type(data)==set) | (type(data)==list):
             try:
@@ -136,3 +136,14 @@ error is raised.
             return tmp
         else:
             raise errors.ListOrSet('keylist needs to be either a list or a set')
+
+
+    def iteritems(self):
+        """
+    returns the iteritems of graph
+        """
+        return self.graph.iteritems()
+
+
+    def nodelist(self):
+        return self.graph.keys()
