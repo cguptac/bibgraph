@@ -1,19 +1,21 @@
 import numpy
 import sys
+import string
+import random
 
 rnd = numpy.random
 sys.path.append('./../')
 import graph
 
 
-def make_graph(m,n, N):
+def make_graph(m,n, l):
     s = graph.graph()
-    keys = rnd.lognormal(1, 1, m)
-    keys = set([int(key * N) for key in keys])
+    keys = random_string(l, m)
+    keys = set(keys)
 
     for key in keys:
-        tmp = rnd.lognormal(1, 1, n)
-        tmp = [int(t * N) for t in tmp]
+        tmp = random_string(l,n)
+        tmp = set(tmp)
         r = rnd.random()
         if r>0.5:
             s.add_upstr(key, tmp)
@@ -21,5 +23,9 @@ def make_graph(m,n, N):
             s.add_dnstr(key, tmp)
     return s
 
+
+def random_string(l, m):
+    return [''.join(random.choice(string.ascii_uppercase + string.digits) for x in range(l)) for x in range(m)]
+    
 
     
